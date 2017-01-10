@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    div.container
+        div.row
+            div.col-xs-8
+                label Classes: (e.g CAS CS 111)
+                form.form-inline
+                    div.form-group#1
+                        select.combobox.form-control.course-input.college
+                        input.form-control.course-input.department(type="text" placeholder="Dept." maxlength="2" id="1" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" title="Missing Department")
+                        input.form-control.course-input.courseNum(type="text" placeholder="Course." maxlength="3" id="1" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" title="Missing Course Number")
+                    div.form-group#2
+                        select.combobox.form-control.course-input.college
+                        input.form-control.course-input.department(type="text" placeholder="Dept." maxlength="2")
+                        input.form-control.course-input.courseNum(type="text" placeholder="Course." maxlength="3")
+                button.btn.btn-default.search Search!
+            div.col-xs-4
+                div.panel.panel-info
+                    div.panel-heading How To Use This Tool
+                    div.panel-body First type the classes you wish to take
+            
