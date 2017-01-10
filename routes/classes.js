@@ -13,13 +13,7 @@ router.get('/getclasses/:classname', function(req, res) {
     var result = new Object();
     result.courseID = input;
 
-    var url = "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1483972520? \
-        ModuleName=univschr.pl&SearchOptionDesc=Class+Number&SearchOptionCd=S&\
-        KeySem=" + semesterID + "&ViewSem=Spring+2017&\
-        College=" + college + "&\
-        Dept=" + dept + "&\
-        Course=" + coursenumber + "&\
-        Section=";
+    var url = "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1483972520?ModuleName=univschr.pl&SearchOptionDesc=Class+Number&SearchOptionCd=S&KeySem=" + semesterID + "&ViewSem=Spring+2017&College=" + college + "&Dept=" + dept + "&Course=" + coursenumber + "&Section=";
 
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -33,22 +27,37 @@ router.get('/getclasses/:classname', function(req, res) {
                     // Note: last index of classesInfo contains form input to move to the next page
                     //       which can be used to test if additional page need to be loaded.
                     var mainTableRows = $('table').find('tr[align="center"][valign="top"]');
+                    // var header = $('table tr').find('th');
+                    // $.each(header, function(i, item) {
+                    //     $.each($(item).children(), function(key, value) {
+                    //         if($(value).text() != "") {
+                    //             var valuestr = $(value).text().trim();
+                    //             hello[valuestr] = null;
+                    //             console.log(key + " : " + $(value).text().trim());
+                    //         }
+                    //     });
+                    // });
+                    // console.log();
+                    // console.log();
+                    // console.log();
+                    // console.log();
+                    // console.log();
                     var classesInfo = mainTableRows.slice(0, -1);
                     var nextPageInfo = mainTableRows.slice(-1);
-                    console.log(classesInfo.length);
-                    //console.log($(classesInfo).text());
-                    //console.log(classesInfo[1]);
-                    console.log(typeof classesInfo[1]);
-                    console.log();
+
                     $.each(classesInfo, function(i, tr) {
-                        $.each($(tr).children(), function(key, value){
+                        var newClass = new Object();
+                        $.each($(tr).children(), function(key, value) {
+                            if ($(value).find('br').length) {
+                                console.log("found br");
+                            }
                             if($(value).text() != "") {
-                                console.log(key + " : " + $(value).text().trim());
+                                console.log(key + " : " + $(value, "font").html().split('br'));
                             }
                         });
                         console.log();
                     });
-                    res.json({input: result});
+                    res.json(result);
                 }
             });
         }
