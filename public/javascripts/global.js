@@ -1,5 +1,5 @@
-var nextID = 1;
-
+var nextID = 2;
+var extraFields = null;
 var collegeList = [
     "CAS", "CFA", "CGS", "COM", "ENG", "GMS", "GRS",
     "LAW", "MED", "MET", "OTP", "PDP", "SAR", "SDM",
@@ -8,28 +8,26 @@ var collegeList = [
 
 // DOM Ready =============================================================
 $(document).ready(function() {
-    loadOptions();
-    $('.combobox').combobox();
-    $('div.form-group#1 input.combobox').attr({
-        'id': '1',
-        'maxlength': '3',
-        "data-toggle": 'tooltip',
-        "data-placement": "bottom",
-        "data-trigger": 'manual',
-        "title": "Missing College"
-    });
-    $('div.form-group#1 input.combobox').focus();
+    extraFields = $('.courseinput').clone();
     disable('.form-group#2')
-
-    $('input.combobox[data-toggle="tooltip"]').tooltip();
-    $('.courseNum').on('keypress', function(e) {
-        return numberOnly(e);
+    $('.form-group#1 .college').focus();
+    $('.college, .department, .courseNum').on('keypress', function(e) {
+        if (e.keyCode == 13) {
+            checkInput(e);
+        }
     });
-    $('.search').on('click', search);
+    $('.search').on('click', function() {
+
+    });
 });
 
 // Functions =============================================================
-function addClassInput() {
+function addExtraFields() {
+    var toBeAdded = $(extraFields).clone();
+    $(toBeAdded).attr('id', nextID);
+    $(toBeAdded).find('label').text(nextID + ": ");
+    nextID++;
+    $('#Inputs').append(toBeAdded);
 }
 
 function search(event) {
@@ -66,13 +64,6 @@ function enable(element) {
     $(element).find('.college').focus();
 }
 
-function loadOptions() {
-    $('.combobox').append("<option value=''>Colleges</option>")
-    $.each(collegeList, function(index, value) {
-        $('.combobox').append("<option value=" + value + ">" + value + "</option>")
-    });
-}
-
 function numberOnly(event) {
     var key = event.keyCode;
     if (key == 13) {
@@ -89,43 +80,71 @@ function alphaOnly(event) {
     return ((key >= 65 && key <= 90) || key == 8);
 };
 
-function addTextBox() {
-    $("<input class='form-control course-input' type='text' placeholder='Enter Class Here'>")
-    .on('keypress', function (e) {
-        checkKey(e);
-    })
-    .appendTo($(".form-group"))
-    .focus();
-}
-
 function checkInput(event) {
-    var container = $(event.target).closest('div.form-group');
+    var container = $(event.target).closest('.courseinput');
     var id = $(container).attr("id");
-    var collegebox = $(container).find("input[type='hidden']");
-
+    var colInput = $(container).find(".college");
+    var deptInput = $(container).find(".department");
+    var coursInput = $(container).find(".courseNum");
     var err = false;
 
-    if ($(collegebox).attr('value') == "") {
-        $("input.combobox[data-toggle='tooltip'][id='" + id + "']").tooltip("show");
+    if ($(colInput).val().length == 3) {
+        var index = collegeList.indexOf($(colInput).val().toUpperCase());
+        if (index < 0) {
+            $(colInput).parent().removeClass('has-success');
+            $(colInput).parent().addClass('has-error');
+            err = true;
+        }
+        else {
+            $(colInput).parent().removeClass('has-error');
+            $(colInput).parent().addClass('has-success');
+        }
+    }
+    else {
+        $(colInput).parent().removeClass('has-success');
+        $(colInput).parent().addClass('has-error');
         err = true;
     }
-    var college = $(collegebox).attr('value');
-    var department = $(container).find("input.department").val();
-    if (department == "") {
-        $("input.department[data-toggle='tooltip'][id='" + id + "']").tooltip("show");
+
+    var department = $(deptInput).val().toUpperCase();
+    if (department.length == 2) {
+        if(/^[A-Z]+$/.test(department)) {
+            $(deptInput).parent().removeClass('has-error');
+            $(deptInput).parent().addClass('has-success');
+        }
+        else {
+            $(deptInput).parent().removeClass('has-success');
+            $(deptInput).parent().addClass('has-error');
+            err = true;
+        }
+    }
+    else {
+        $(deptInput).parent().removeClass('has-success');
+        $(deptInput).parent().addClass('has-error');
         err = true;
     }
-    var courseNum = $(container).find("input.courseNum").val();
-    if (courseNum == "") {
-        $("input.courseNum[data-toggle='tooltip'][id='" + id + "']").tooltip("show");
+
+    var courseNum = $(coursInput).val();
+    if (courseNum.length == 3) {
+        if(/^[0-9]+$/.test(courseNum)) {
+            $(coursInput).parent().removeClass('has-error');
+            $(coursInput).parent().addClass('has-success');
+        }
+        else {
+            $(coursInput).parent().removeClass('has-success');
+            $(coursInput).parent().addClass('has-error');
+            err = true;
+        }
+    }
+    else {
+        $(coursInput).parent().removeClass('has-success');
+        $(coursInput).parent().addClass('has-error');
         err = true;
     }
     //var input = college.concat(department, courseNum);
     if(!err) {
-        var container = $(event.target).closest('div.form-group');
-        var id = $(container).attr("id");
-        var next = (parseInt(id) + 1).toString();
-        enable('.form-group#' + next);
+        addExtraFields();
+        $('.form-group#' + (nextID-1) + ' .college').focus();
     }
 }
 
