@@ -5,15 +5,27 @@ block content
         div.row
             div.col-xs-8
                 label Classes: (e.g CAS CS 111)
-                form.form-inline
-                    div.form-group#1
-                        select.combobox.form-control.course-input.college
-                        input.form-control.course-input.department(type="text" placeholder="Dept." maxlength="2" id="1" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" title="Missing Department")
-                        input.form-control.course-input.courseNum(type="text" placeholder="Course." maxlength="3" id="1" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" title="Missing Course Number")
-                    div.form-group#2
-                        select.combobox.form-control.course-input.college
-                        input.form-control.course-input.department(type="text" placeholder="Dept." maxlength="2")
-                        input.form-control.course-input.courseNum(type="text" placeholder="Course." maxlength="3")
+                form.form-inline#Inputs
+                    .form-group.courseinput#1
+                        .form-group
+                            label 1: 
+                            |       
+                            input.form-control.college(type='text', placeholder='College' maxlength=3)
+                        |     
+                        .form-group
+                            input.form-control.department(type='text', placeholder='Department' maxlength=2)
+                        |     
+                        .form-group
+                            input.form-control.courseNum(type='text', placeholder='Course Number' maxlength=3)
+                    //- div.form-group.has-danger#1
+                    //-     label 1:
+                    //-     input.form-control.course-input.college(name="collegeInput" type="text" placeholder="Col.")
+                    //-     input.form-control.course-input.department(name="departmentInput" type="text" placeholder="Dept." maxlength="2" id="1")
+                    //-     input.form-control.course-input.courseNum(name="courseNumInput" type="text" placeholder="Course." maxlength="3" id="1")
+                    //- div.form-group#2
+                    //- input.form-control.course-input.college(name="collegeInput" type="text" placeholder="Col.")
+                    //- input.form-control.course-input.department(name="departmentInput" type="text" placeholder="Dept." maxlength="2" id="1")
+                    //- input.form-control.course-input.courseNum(name="courseNumInput" type="text" placeholder="Course." maxlength="3" id="1")
                 button.btn.btn-default.search Search!
             div.col-xs-4
                 div.panel.panel-info
