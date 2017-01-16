@@ -16,9 +16,7 @@ $(document).ready(function() {
             checkInput(e);
         }
     });
-    $('.search').on('click', function() {
-
-    });
+    $('.search').on('click', search);
 });
 
 // Functions =============================================================
@@ -39,7 +37,7 @@ function search(event) {
 
     $.ajax({
         type: 'GET',
-        url: '/classes/getclasses/CASCS111',
+        url: '/api/getclasses/20174/CASCS111',
     }).done(function(data) {
         $.each(data , function(key, val) {
             console.log(key + ": " + val);
