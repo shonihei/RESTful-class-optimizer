@@ -16,7 +16,7 @@ form .form-group {
 }
 
 input {
-		text-transform: uppercase;
+	text-transform: uppercase;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     text-transform: none;

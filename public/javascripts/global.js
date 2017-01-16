@@ -11,11 +11,17 @@ $(document).ready(function() {
     extraFields = $('.courseinput').clone();
     disable('.form-group#2')
     $('.form-group#1 .college').focus();
-    $('.college, .department, .courseNum').on('keypress', function(e) {
+    $(document).on('keypress', '.college, .department, .courseNum', function(e) {
         if (e.keyCode == 13) {
-            checkInput(e);
+            if(checkInput(e)) {
+                addExtraFields();
+                $('.form-group#' + (nextID-1) + ' .college').focus();
+            }
         }
     });
+    $('.courseinput#1 .college').autotab({ format: 'alpha', target: '.courseinput#1 .department'});
+    $('.courseinput#1 .department').autotab({ format: 'alpha', target: '.courseinput#1 .courseNum', previous: '.courseinput#1 .college'});
+    $('.courseinput#1 .courseNum').autotab({ format: 'number', previous: '.courseinput#1 .department'});
     $('.search').on('click', search);
 });
 
@@ -24,8 +30,11 @@ function addExtraFields() {
     var toBeAdded = $(extraFields).clone();
     $(toBeAdded).attr('id', nextID);
     $(toBeAdded).find('label').text(nextID + ": ");
-    nextID++;
     $('#Inputs').append(toBeAdded);
+    $('.courseinput#' + nextID+ ' .college').autotab({ format: 'alpha', target: '.courseinput#' + nextID+ ' .department'});
+    $('.courseinput#' + nextID+ ' .department').autotab({ format: 'alpha', target: '.courseinput#' + nextID+ ' .courseNum', previous: '.courseinput#' + nextID+ ' .college'});
+    $('.courseinput#' + nextID+ ' .courseNum').autotab({ format: 'number', previous: '.courseinput#' + nextID+ ' .department'});
+    nextID++;
 }
 
 function search(event) {
@@ -61,22 +70,6 @@ function enable(element) {
         })
     $(element).find('.college').focus();
 }
-
-function numberOnly(event) {
-    var key = event.keyCode;
-    if (key == 13) {
-        return checkInput(event);
-    }
-    return ((key >= 48 && key <= 57) || key == 8);
-};
-
-function alphaOnly(event) {
-    var key = event.keyCode;
-    if (key == 13) {
-        checkInput(event);
-    }
-    return ((key >= 65 && key <= 90) || key == 8);
-};
 
 function checkInput(event) {
     var container = $(event.target).closest('.courseinput');
@@ -139,11 +132,8 @@ function checkInput(event) {
         $(coursInput).parent().addClass('has-error');
         err = true;
     }
-    //var input = college.concat(department, courseNum);
-    if(!err) {
-        addExtraFields();
-        $('.form-group#' + (nextID-1) + ' .college').focus();
-    }
+
+    return !err;
 }
 
 function validateCourseID(str) {
