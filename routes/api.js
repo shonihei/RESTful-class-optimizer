@@ -6,7 +6,8 @@ var buscraper = require('../node_modules/buscraper');
 
 
 /* GET class info. */
-router.get('/getclasses/:semester/:classname', function(req, res) {
+router.get('/getclasses/:semester', function(req, res) {
+    console.log(req.params.classname);
     buscraper.getClass(req.params.semester, req.params.classname, function(err, result) {
         if(err) {
             res.send(err);
