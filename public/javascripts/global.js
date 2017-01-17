@@ -1,6 +1,6 @@
 var nextID = 2;
 var extraFields = null;
-var collegeList = [
+const collegeList = [
     "CAS", "CFA", "CGS", "COM", "ENG", "GMS", "GRS",
     "LAW", "MED", "MET", "OTP", "PDP", "SAR", "SDM",
     "SED", "SHA", "SPH", "SSW", "STH", "UHC", "UNI",
@@ -22,12 +22,13 @@ $(document).ready(function() {
     $('.courseinput#1 .college').autotab({ format: 'alpha', target: '.courseinput#1 .department'});
     $('.courseinput#1 .department').autotab({ format: 'alpha', target: '.courseinput#1 .courseNum', previous: '.courseinput#1 .college'});
     $('.courseinput#1 .courseNum').autotab({ format: 'number', previous: '.courseinput#1 .department'});
+    $('#Submit .year').autotab({format: 'number', target: '#Submit .semester'});
     $('.search').on('click', search);
 });
 
 // Functions =============================================================
 function addExtraFields() {
-    var toBeAdded = $(extraFields).clone();
+    let toBeAdded = $(extraFields).clone();
     $(toBeAdded).attr('id', nextID);
     $(toBeAdded).find('label').text(nextID + ": ");
     $('#Inputs').append(toBeAdded);
@@ -40,18 +41,37 @@ function addExtraFields() {
 function search(event) {
     event.preventDefault();
 
-    var input = {
-        classes: ["Hello", "Goodbye"]
+    let input = collectInputs();
+    let queryString = ("?classname=" + input[0]);
+    for(let i = 1; i < input.length; ++i) {
+        queryString += ("&classname=" + input[i]);
     }
-
     $.ajax({
         type: 'GET',
-        url: '/api/getclasses/20174/CASCS111',
+        url: '/api/getclasses/20174' + queryString,
     }).done(function(data) {
         $.each(data , function(key, val) {
             console.log(key + ": " + val);
         });
     })
+}
+
+function collectInputs() {
+    let input = [];
+
+    let inputDOMs = $('form#Inputs').children('div.courseinput');
+    $.each(inputDOMs, function(index, courseRow) {
+        let parsedString = "";
+        let inputCollection = $(courseRow).find('input');
+        $.each(inputCollection, function(i, v) {
+            parsedString = parsedString.concat($(v).val().toUpperCase());
+        });
+        // Check if input is valid
+        if (parsedString.length == 8) {
+            input.push(parsedString);
+        }
+    });
+    return input;
 }
 
 function disable(element) {
@@ -72,15 +92,15 @@ function enable(element) {
 }
 
 function checkInput(event) {
-    var container = $(event.target).closest('.courseinput');
-    var id = $(container).attr("id");
-    var colInput = $(container).find(".college");
-    var deptInput = $(container).find(".department");
-    var coursInput = $(container).find(".courseNum");
-    var err = false;
+    let container = $(event.target).closest('.courseinput');
+    let id = $(container).attr("id");
+    let colInput = $(container).find(".college");
+    let deptInput = $(container).find(".department");
+    let coursInput = $(container).find(".courseNum");
+    let err = false;
 
     if ($(colInput).val().length == 3) {
-        var index = collegeList.indexOf($(colInput).val().toUpperCase());
+        let index = collegeList.indexOf($(colInput).val().toUpperCase());
         if (index < 0) {
             $(colInput).parent().removeClass('has-success');
             $(colInput).parent().addClass('has-error');
@@ -97,7 +117,7 @@ function checkInput(event) {
         err = true;
     }
 
-    var department = $(deptInput).val().toUpperCase();
+    let department = $(deptInput).val().toUpperCase();
     if (department.length == 2) {
         if(/^[A-Z]+$/.test(department)) {
             $(deptInput).parent().removeClass('has-error');
@@ -115,7 +135,7 @@ function checkInput(event) {
         err = true;
     }
 
-    var courseNum = $(coursInput).val();
+    let courseNum = $(coursInput).val();
     if (courseNum.length == 3) {
         if(/^[0-9]+$/.test(courseNum)) {
             $(coursInput).parent().removeClass('has-error');
@@ -139,9 +159,9 @@ function checkInput(event) {
 function validateCourseID(str) {
     //CASCS111
     if(str.length == 8) {
-        var college = str.slice(0, 3);
-        var department = str.slice(3, 5);
-        var courseNum = str.slice(5);
+        let college = str.slice(0, 3);
+        let department = str.slice(3, 5);
+        let courseNum = str.slice(5);
 
         if(collegeList.indexOf(college) > -1) {
             if(/^[A-Z]+$/.test(department)) {
