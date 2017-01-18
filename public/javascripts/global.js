@@ -6,6 +6,13 @@ const collegeList = [
     "SED", "SHA", "SPH", "SSW", "STH", "UHC", "UNI",
     "XAS", "XRG", "SMG", "QST"];
 
+const semToNumber = {
+    "Summer 1" : "1",
+    "Summer 2" : "2",
+    "Fall" : "3",
+    "Spring" : "4"
+}
+
 // DOM Ready =============================================================
 $(document).ready(function() {
     extraFields = $('.courseinput').clone();
@@ -42,18 +49,63 @@ function search(event) {
     event.preventDefault();
 
     let input = collectInputs();
-    let queryString = ("?classname=" + input[0]);
-    for(let i = 1; i < input.length; ++i) {
-        queryString += ("&classname=" + input[i]);
+    // Check the user has put in at least one input
+    if (input.length < 1) {
+        return false;
     }
-    $.ajax({
-        type: 'GET',
-        url: '/api/getclasses/20174' + queryString,
-    }).done(function(data) {
-        $.each(data , function(key, val) {
-            console.log(key + ": " + val);
-        });
-    })
+
+    // Check that the user has chosen a valid semester code
+    let semester = collectSemester();
+    if (semester.length != 5) {
+        return false;
+    }
+
+    let ajax_caller = function(data) {
+        return $.ajax({
+            url: data.url,
+            method: data.method
+        }).done(function(result) {
+            console.log(result);
+        })};
+
+    let ajax_calls = [];
+    for (var i = 0; i < input.length; i++) {
+        ajax_calls.push(ajax_caller({
+            url: '/api/getclass?semester=' + semester + '&classname=' + input[i],
+            method: 'GET',
+            statusCode: {
+                400 : function() {
+                    alert("fuck");
+                }
+            }
+        }));
+    }
+
+    $.when.apply(this, ajax_calls).done(function() {
+        console.log("Got everything");
+    });
+
+    // Second option to send one giant query.
+    // let queryString = ("&classname=" + input[0]);
+    // for(let i = 1; i < input.length; ++i) {
+    //     queryString += ("&classname=" + input[i]);
+    // }
+    //
+    // $.ajax({
+    //     type: 'GET',
+    //     url: '/api/getclasses?semester=' + semester + queryString
+    // }).done(function(data) {
+    //     $.each(data , function(key, val) {
+    //         console.log(key + ": " + val);
+    //     });
+    // })
+}
+
+function collectSemester() {
+    let submitDOMs = $('form#Submit').find('input, select');
+    let year = $(submitDOMs[0]).val();
+    let sem = semToNumber[$(submitDOMs[1]).find(':selected').text()];
+    return year + sem;
 }
 
 function collectInputs() {
