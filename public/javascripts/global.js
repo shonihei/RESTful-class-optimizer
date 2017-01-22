@@ -63,9 +63,10 @@ function search(event) {
     let ajax_caller = function(data) {
         return $.ajax({
             url: data.url,
-            method: data.method
+            method: data.method,
+            statusCode: data.statusCode
         }).done(function(result) {
-            console.log(result);
+            console.log("Got " + result.courseID);
         })};
 
     let ajax_calls = [];
@@ -75,7 +76,7 @@ function search(event) {
             method: 'GET',
             statusCode: {
                 400 : function() {
-                    alert("fuck");
+                    console.log("Fuck");
                 }
             }
         }));
@@ -84,21 +85,6 @@ function search(event) {
     $.when.apply(this, ajax_calls).done(function() {
         console.log("Got everything");
     });
-
-    // Second option to send one giant query.
-    // let queryString = ("&classname=" + input[0]);
-    // for(let i = 1; i < input.length; ++i) {
-    //     queryString += ("&classname=" + input[i]);
-    // }
-    //
-    // $.ajax({
-    //     type: 'GET',
-    //     url: '/api/getclasses?semester=' + semester + queryString
-    // }).done(function(data) {
-    //     $.each(data , function(key, val) {
-    //         console.log(key + ": " + val);
-    //     });
-    // })
 }
 
 function collectSemester() {
