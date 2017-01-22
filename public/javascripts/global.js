@@ -46,6 +46,7 @@ function addExtraFields() {
 }
 
 function search(event) {
+    console.log("begin search...");
     event.preventDefault();
 
     let input = collectInputs();
@@ -66,7 +67,7 @@ function search(event) {
             method: data.method,
             statusCode: data.statusCode
         }).done(function(result) {
-            console.log("Got " + result.courseID);
+            console.log(result);
         })};
 
     let ajax_calls = [];
@@ -83,7 +84,8 @@ function search(event) {
     }
 
     $.when.apply(this, ajax_calls).done(function() {
-        console.log("Got everything");
+        //console.log(ajax_calls);
+        //$('#weekly-schedule').dayScheduleSelector(DayScheduleSelector.DEFAULTS);
     });
 }
 
