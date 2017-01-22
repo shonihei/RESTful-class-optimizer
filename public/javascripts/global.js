@@ -61,31 +61,30 @@ function search(event) {
         return false;
     }
 
+    let resultCollection = [];
+
     let ajax_caller = function(data) {
         return $.ajax({
             url: data.url,
             method: data.method,
-            statusCode: data.statusCode
         }).done(function(result) {
-            console.log(result);
-        })};
+            if (result.status == "success") {
+                resultCollection.push(result.data);
+            }
+        })
+    };
 
     let ajax_calls = [];
     for (var i = 0; i < input.length; i++) {
         ajax_calls.push(ajax_caller({
             url: '/api/getclass?semester=' + semester + '&classname=' + input[i],
             method: 'GET',
-            statusCode: {
-                400 : function() {
-                    console.log("Fuck");
-                }
-            }
         }));
     }
 
     $.when.apply(this, ajax_calls).done(function() {
-        //console.log(ajax_calls);
-        //$('#weekly-schedule').dayScheduleSelector(DayScheduleSelector.DEFAULTS);
+        console.log("finished")
+        console.log(resultCollection);
     });
 }
 
