@@ -46,7 +46,7 @@ function addExtraFields() {
 }
 
 function search(event) {
-    console.log("begin search...");
+    //console.log("begin search...");
     event.preventDefault();
 
     let input = collectInputs();
