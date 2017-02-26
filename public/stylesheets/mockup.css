@@ -1,3 +1,13 @@
+@font-face {
+  font-family: Painter;
+  src: url(../assets/fonts/Painter.ttf);
+  font-weight: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     background-color: #FAFAFA;
@@ -16,7 +26,7 @@ main header {
     position: relative;
 }
 
-ul {
+ol, ul {
     list-style: none;
 }
 
@@ -34,14 +44,41 @@ ul, menu, dir {
     -webkit-padding-start: 40px;
 }
 
+#title {
+    position: relative;
+    bottom: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#title h1 {
+    font-family: Montserrat, Open Sans,Segoe UI,sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+    font-style: normal;
+    align-self: center;
+    color: #FAFAFA;
+}
+
 #form-area {
     position: relative;
-    bottom: 220px;
+    bottom: 340px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 600px;
     z-index: 0;
+}
+
+.form-container {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FAFAFA;
 }
 
 .globalNav {
@@ -75,13 +112,12 @@ ul, menu, dir {
 
 .globalNav .navSection.logo {
     display: flex;
-    position: absolute;
     top: 0;
     left: 0;
 }
 
 .globalNav .navSection.logo .rootLink {
-    padding-left: 20px!important;
+    padding-left: 40px!important;
 }
 
 .globalNav h1 {
@@ -89,6 +125,25 @@ ul, menu, dir {
     font-size: 20px;
     margin: 0;
     font-weight: 100;
+}
+
+.container, .container-fluid, .container-lg, .container-wide, .container-xl {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.globalNav>.container-lg {
+    padding: 0;
+}
+
+.container, .container-lg {
+    max-width: 1040px;
+}
+
+.rootLink h1 {
+    font-family: Painter;
+    font-size: 32px;
 }
 
 .globalNav .rootLink {
@@ -104,20 +159,6 @@ ul, menu, dir {
     font-weight: 100;
     margin: 0;
     padding: 0 20px;
-}
-
-.container, .container-fluid, .container-lg, .container-wide, .container-xl {
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-}
-
-.globalNav>.container-lg {
-    padding: 0;
-}
-
-.container, .container-lg {
-    max-width: 1040px;
 }
 
 #topLayer {
@@ -142,6 +183,10 @@ ul, menu, dir {
     z-index: -2;
 }
 
+.contactLink {
+    padding-right: 40px !important;
+}
+
 .globalNav .navSection.generalInfo {
     position: absolute;
     top: 0;
@@ -153,7 +198,7 @@ ul, menu, dir {
 }
 
 @media (min-width: 670px) {
-    .globalNav .navSection.generalInfo {
+     .globalNav .navSection.logo, .globalNav .navSection.generalInfo {
         display: -ms-flexbox;
         display: flex;
     }
