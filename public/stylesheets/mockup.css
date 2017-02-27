@@ -146,6 +146,11 @@ ul, menu, dir {
     font-size: 32px;
 }
 
+span {
+    font-family: Painter;
+    font-size: 40px;
+}
+
 .globalNav .rootLink {
     display: inline-block;
     height: 50px;
@@ -213,7 +218,7 @@ ul, menu, dir {
 input[type="text"] {
     box-sizing: border-box;
     width: 100%;
-    height: calc(4em + 1px);
+    height: calc(5em + 1px);
     margin: 0 0 1em;
     padding: 1em;
     border: 1px solid #ccc;
@@ -224,15 +229,15 @@ input[type="text"] {
 }
 
 input[type="text"][required]:focus {
-    border-color: #00bafa;
+    border-color: #742E2E;
 }
 input[type="text"][required]:focus + label[placeholder]:before {
-    color: #00bafa;
+    color: #742E2E;
 }
 input[type="text"][required]:focus + label[placeholder]:before,
 input[type="text"][required]:valid + label[placeholder]:before {
     transition-duration: .2s;
-    transform: translate(0, -1.5em) scale(0.9, 0.9);
+    transform: translate(0, -1.7em) scale(1.1, 1.1);
 }
 
 input[type="text"][required]:invalid + label[placeholder][alt]:before {
@@ -243,7 +248,7 @@ input[type="text"][required] + label[placeholder] {
     display: block;
     pointer-events: none;
     line-height: 1em;
-    margin-top: calc(-6em + 3px);
+    margin-top: calc(-7em + 1px);
     margin-bottom: calc((3em - 1em) + 2px);
 }
 
