@@ -63,7 +63,7 @@ ul, menu, dir {
 
 #form-area {
     position: relative;
-    bottom: 340px;
+    bottom: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
