@@ -329,7 +329,7 @@ ul, menu, dir {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	color: #a3d39c;
+	color: #79302E;
 	padding: 0.25em 0;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -351,7 +351,7 @@ ul, menu, dir {
 .input__field--yoshiko:focus + .input__field--yoshiko,
 .input--filled .input__field--yoshiko {
 	background-color: transparent;
-	border-color: #a3d39c;
+	border-color: #79302E;
 }
 
 @media (min-width: 670px) {
