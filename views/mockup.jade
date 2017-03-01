@@ -5,6 +5,8 @@ html
         meta(name="viewport", content="width=device-width initial-scale=1")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel='stylesheet', href='/stylesheets/mockup.css')
+        
+        //script(src='/javascripts/mockup.js')
     body
         header.globalNav
             div.container-lg
@@ -91,4 +93,31 @@ html
                                 input#input-3.input__field.input__field--yoshiko(type='text')
                                 label.input__label.input__label--yoshiko(for='input-3')
                                     span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
-                        
+            script(src='../javascripts/classie.js')
+            script.
+                (function() {
+                    if (!String.prototype.trim) {
+                        (function() {
+                            var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                            String.prototype.trim = function() {
+                                return this.replace(rtrim, '');
+                            };
+                        })();
+                    }
+                    [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                        if( inputEl.value.trim() !== '' ) {
+                            classie.add( inputEl.parentNode, 'input--filled' );
+                        }
+                        inputEl.addEventListener( 'focus', onInputFocus );
+                        inputEl.addEventListener( 'blur', onInputBlur );
+                    });
+                    function onInputFocus(ev) {
+                        classie.add( ev.target.parentNode, 'input--filled' );
+                    }
+                    function onInputBlur( ev ) {
+                        if( ev.target.value.trim() === '' ) {
+                            classie.remove( ev.target.parentNode, 'input--filled' );
+                        }
+                    }
+                })();
+		
