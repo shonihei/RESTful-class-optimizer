@@ -217,6 +217,24 @@ ul, menu, dir {
     color: #79302E;
 }
 
+input.next {
+    background: linear-gradient(-180deg, #F46D12 25%, #D84E35 89%);
+    color: #FAFAFA;
+    border: none;
+    border-radius: 3px;
+    padding: 15px 95px;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.47);
+    font-family: Montserrat, Open Sans,Segoe UI,sans-serif;
+    font-weight: 100;
+}
+
+.nextContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+
 .input {
 	position: relative;
 	z-index: 1;
@@ -282,9 +300,6 @@ ul, menu, dir {
 	color: #ddd;
 	font-size: 150%;
 }
-
-/* Individual styles */
-
 
 /* Yoshiko */
 .input__field--yoshiko {

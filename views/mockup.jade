@@ -5,7 +5,8 @@ html
         meta(name="viewport", content="width=device-width initial-scale=1")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel='stylesheet', href='/stylesheets/mockup.css')
-        
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+        script(src='../javascripts/mockup-global.js')
         //script(src='/javascripts/mockup.js')
     body
         header.globalNav
@@ -15,7 +16,7 @@ html
                         a.rootLink 
                             h1 AntZer
                     li.navSection.generalInfo
-                        a.rootLink About
+                        a.rootLink.aboutLink About
                         a.rootLink.contactLink Contact
         div.globalContent
             main
@@ -93,6 +94,8 @@ html
                                 input#input-3.input__field.input__field--yoshiko(type='text')
                                 label.input__label.input__label--yoshiko(for='input-3')
                                     span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                        div.nextContainer
+                            input.next(type="submit" value="NEXT")
             script(src='../javascripts/classie.js')
             script.
                 (function() {
