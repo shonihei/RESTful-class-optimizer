@@ -4,9 +4,11 @@ let semester = "20174"
 // add event listeners
 $(document).ready(function() {
     console.log("Document ready!")
+    $('input').autotab();
     $('.next').on('click', requestData);
 });
 
+// validate userinput and request appropriate data
 function requestData(e) {
     // Stop form from submitting by default
     e.preventDefault();
@@ -79,7 +81,7 @@ function collectUserInput() {
         // If the row was left empty, don't validate
         let leftEmpty = parsedString.length === 0;
 
-        if (!leftEmpty && validInput(parsedString)) {
+        if (!leftEmpty && validInput(parsedString, containers[index])) {
             userInput.push(parsedString.toUpperCase());
         }
     });
@@ -87,16 +89,21 @@ function collectUserInput() {
     return userInput;
 }
 
+let test;
 // Validate the string input by the user
 // Valid input : CASCS111
 // length == 8
 // First 5 must be chars, last 3 must be numbers
-function validInput(str) {
+function validInput(str, element) {
+    let loadSign = $(element).find('.feedback')
+    $(loadSign).addClass('showLoad');
+
     // Check that the string is exactly 8 characters long
     if (str.length !== 8) {
         /*
         Visual indication and custom error message goes here
         */
+
         alert(str + " is not a valid class format")
         return false;
     }

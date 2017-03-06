@@ -258,6 +258,7 @@ input.next {
 	font-weight: 400;
 	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	-webkit-appearance: none; /* for box shadows to show on iOS */
+    text-transform: uppercase;
 }
 
 .input__field:focus {
@@ -343,7 +344,7 @@ input.next {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	color: #79302E;
+	color: #f9bd84;
 	padding: 0.25em 0;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -365,8 +366,51 @@ input.next {
 .input__field--yoshiko:focus + .input__field--yoshiko,
 .input--filled .input__field--yoshiko {
 	background-color: transparent;
-	border-color: #79302E;
+	border-color: #f9bd84;
 }
+
+.wrapper {
+    position: relative;
+}
+
+.feedback {
+    position: absolute;
+    top: 23px;
+    left: 735px;
+    color: #f9bd84;
+    opacity: 0;
+}
+
+.showLoad {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+    display: inline;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
 
 @media (min-width: 670px) {
     .globalNav .navSection.logo, .globalNav .navSection.generalInfo {

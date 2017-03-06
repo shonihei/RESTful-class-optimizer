@@ -7,6 +7,7 @@ html
         link(rel='stylesheet', href='/stylesheets/mockup.css')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
         script(src='../javascripts/mockup-global.js')
+        script(src='/javascripts/jquery.autotab.min.js')
         //script(src='/javascripts/mockup.js')
     body
         header.globalNav
@@ -42,58 +43,74 @@ html
                     div.form-container
                         div.container-lg
                             h1.formTitle What classes are you interested in?
-                        div.courseinput#course1
-                            span.input.input--yoshiko
-                                input#input-1.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-1')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
-                            span.input.input--yoshiko
-                                input#input-2.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-2')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
-                            span.input.input--yoshiko
-                                input#input-3.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-3')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
-                        div.courseinput#course2
-                            span.input.input--yoshiko
-                                input#input-1.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-1')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
-                            span.input.input--yoshiko
-                                input#input-2.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-2')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
-                            span.input.input--yoshiko
-                                input#input-3.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-3')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
-                        div.courseinput#course3
-                            span.input.input--yoshiko
-                                input#input-1.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-1')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
-                            span.input.input--yoshiko
-                                input#input-2.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-2')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
-                            span.input.input--yoshiko
-                                input#input-3.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-3')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
-                        div.courseinput#course4
-                            span.input.input--yoshiko
-                                input#input-1.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-1')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
-                            span.input.input--yoshiko
-                                input#input-2.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-2')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
-                            span.input.input--yoshiko
-                                input#input-3.input__field.input__field--yoshiko(type='text')
-                                label.input__label.input__label--yoshiko(for='input-3')
-                                    span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                        div.wrapper
+                            div.courseinput#course1
+                                span.input.input--yoshiko
+                                    input#input-1.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-1')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
+                                span.input.input--yoshiko
+                                    input#input-2.input__field.input__field--yoshiko(type='text' maxlength=2)
+                                    label.input__label.input__label--yoshiko(for='input-2')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
+                                span.input.input--yoshiko
+                                    input#input-3.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-3')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                                span.feedback
+                                    i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+                                    span.sr-only Loading...
+                        div.wrapper
+                            div.courseinput#course2
+                                span.input.input--yoshiko
+                                    input#input-1.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-1')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
+                                span.input.input--yoshiko
+                                    input#input-2.input__field.input__field--yoshiko(type='text' maxlength=2)
+                                    label.input__label.input__label--yoshiko(for='input-2')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
+                                span.input.input--yoshiko
+                                    input#input-3.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-3')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                                span.feedback
+                                    i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+                                    span.sr-only Loading...
+                        div.wrapper
+                            div.courseinput#course3
+                                span.input.input--yoshiko
+                                    input#input-1.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-1')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
+                                span.input.input--yoshiko
+                                    input#input-2.input__field.input__field--yoshiko(type='text' maxlength=2)
+                                    label.input__label.input__label--yoshiko(for='input-2')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
+                                span.input.input--yoshiko
+                                    input#input-3.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-3')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                                span.feedback
+                                    i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+                                    span.sr-only Loading...
+                        div.wrapper
+                            div.courseinput#course4
+                                span.input.input--yoshiko
+                                    input#input-1.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-1')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COLLEGE") COLLEGE
+                                span.input.input--yoshiko
+                                    input#input-2.input__field.input__field--yoshiko(type='text' maxlength=2)
+                                    label.input__label.input__label--yoshiko(for='input-2')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
+                                span.input.input--yoshiko
+                                    input#input-3.input__field.input__field--yoshiko(type='text' maxlength=3)
+                                    label.input__label.input__label--yoshiko(for='input-3')
+                                        span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
+                                span.feedback
+                                    i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+                                    span.sr-only Loading...
                         div.nextContainer
                             input.next(type="submit" value="NEXT")
             script(src='../javascripts/classie.js')
