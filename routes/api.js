@@ -12,11 +12,13 @@ router.get('/getclass', function(req, res) {
         if(err) {
             return res.json({
                 status: "error",
+                requestedclass: className,
                 message: err
             });
         }
         res.json({
             status: "success",
+            requestedclass: className,
             data : result
         });
     })
