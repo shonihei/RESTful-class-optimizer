@@ -414,7 +414,7 @@ input.next:focus {
 }
 
 .hasSuccess {
-    color: #54f63a;
+    color: #41c72c;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
