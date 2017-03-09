@@ -11,6 +11,16 @@ $(document).ready(function() {
 
     // Add submission event listener
     $('.next').on('click', requestData);
+    $(document).on('keypress', function(e) {
+        console.log("EVENT HEARD");
+        if (e.key == "space") {
+            $("g").velocity({ width: "+=255"});
+        }
+        else {
+            $("svg").velocity({ width: "+=255"});
+        }
+
+    });
 });
 
 // validate userinput and request appropriate data
@@ -71,6 +81,26 @@ function requestData(e) {
     // Send requests asynchnously and do something when everything is complete
     $.when.apply(this, ajax_calls).done(function() {
         console.log("AJAX completed...");
+        $('.form-container').empty();
+        $('.form-container').append($("<div id='target'></div>"));
+
+        let settings = {
+            fontColor: "#c7774d",
+            hoverColor: "#f9bd84",
+            selectionColor: "#f6963b",
+            fontSize: "1.5em",
+            fontFamily: '"Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif'
+        }
+
+        $('#target').weekly_schedule(settings);
+        $('.schedule').css({
+            height: "90%"
+        });
+        $('.schedule h5, .schedule h3').css({
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            fontWeight: "300"
+        });
     });
 }
 

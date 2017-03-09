@@ -79,7 +79,7 @@ ul, menu, dir {
     position: absolute;
     height: 80%;
     width: 80%;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: transparent;
@@ -226,12 +226,18 @@ input.next {
     background: linear-gradient(-180deg, #F46D12 25%, #D84E35 89%);
     color: #FAFAFA;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 15px 95px;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.47);
+    box-shadow: 0 17px 10px -10px rgba(0,0,0,0.4);
+    transition: all ease-in-out 300ms;
     font-family: Montserrat, Open Sans,Segoe UI,sans-serif;
     font-weight: 100;
     z-index: 10;
+}
+
+input.next:hover {
+    box-shadow: 0 22px 20px -10px rgba(0,0,0,0.2);
+    transform: translate(0px, -5px);
 }
 
 input.next:focus {
