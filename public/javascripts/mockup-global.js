@@ -97,7 +97,7 @@ function initializeSchedule() {
     // Customize styles
     $('.form-container').css({
         paddingTop: "5%",
-        paddingLeft: "0"
+        paddingRight: "0"
     });
     $('.schedule').css({
         height: "90%"
