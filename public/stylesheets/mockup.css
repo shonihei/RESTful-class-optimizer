@@ -78,14 +78,20 @@ ul, menu, dir {
 .form-container {
     position: absolute;
     height: 80%;
-    width: 80%;
+    width: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: transparent;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.44);
     display: flex;
     padding: 0 50px;
     flex-direction: column;
+}
+
+.form-container .container-lg {
+    padding-top: 20px;
 }
 
 .globalNav {
@@ -393,7 +399,7 @@ input.next:focus {
 .feedback {
     position: absolute;
     top: 23px;
-    left: 735px;
+    left: 770px;
     color: #f9bd84;
     opacity: 0;
 }
