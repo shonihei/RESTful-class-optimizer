@@ -82,7 +82,7 @@ ul, menu, dir {
     border-radius: 10px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.44);
     display: flex;
-    padding: 0 50px;
+    padding: 0 75px;
     flex-direction: column;
 }
 
@@ -126,7 +126,7 @@ ul, menu, dir {
 }
 
 .globalNav .navSection.logo .rootLink {
-    padding-left: 40px!important;
+    margin-left: 40px;
 }
 
 .globalNav h1 {
@@ -168,11 +168,16 @@ ul, menu, dir {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: default;
     font-size: 17px;
     line-height: 50px;
     font-weight: 100;
     margin: 0;
     padding: 0 20px;
+}
+
+.rootLink:hover {
+    background: red;
 }
 
 #topLayer {
@@ -197,8 +202,8 @@ ul, menu, dir {
     z-index: -2;
 }
 
-.contactLink {
-    padding-right: 40px !important;
+#intro {
+    height:550px
 }
 
 .globalNav .navSection.generalInfo {
@@ -208,7 +213,8 @@ ul, menu, dir {
 }
 
 .globalNav .navSection.generalInfo {
-    display: none;
+    display: flex;
+    padding-right: 40px;
 }
 
 .courseinput {
@@ -463,16 +469,58 @@ input.next:focus {
     }
 }
 
+@media (max-width: 802px) {
+    #title h1 {
+        font-size: 25px;
+    }
 
-@media (min-width: 670px) {
+    #title span {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .formTitle {
+        font-size: 25px;
+    }
+
+    #intro {
+        height:420px
+    }
+}
+
+@media (max-width: 670px) {
     .globalNav .navSection.logo, .globalNav .navSection.generalInfo {
         display: -ms-flexbox;
         display: flex;
     }
 }
 
-@media (min-width: 880px) {
-    #intro {
-        height:550px
+@media (max-width: 600px) {
+    #title h1 {
+        font-size: 20px;
+    }
+
+    #title span {
+        font-size: 20px;
+    }
+
+    .formTitle {
+        font-size: 17px;
+    }
+
+    .form-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formTitle {
+        font-size: 15px;
+    }
+
+    .feedback i {
+        margin: 0.8em 0.2em 0.8em 0;
+        font-size: 2em;
     }
 }

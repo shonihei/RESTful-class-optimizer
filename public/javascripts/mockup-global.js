@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     // Add submission event listener
     $('.next').on('click', requestData);
-    $('h1').on('click', initializeSchedule);
+    //$('h1').on('click', initializeSchedule);
 });
 
 // validate userinput and request appropriate data

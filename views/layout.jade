@@ -1,20 +1,30 @@
 doctype html
 html
     head
-        title= title
+        title=title
         meta(name="viewport", content="width=device-width initial-scale=1")
-        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
-        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
-        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-        link(rel='stylesheet', href='/stylesheets/style.css')
-    body
-        div.container
-            div.jumbotron
-                h1 Welcome to Class Optimizer!
-                    br
-                    small Don't let academics control your life!
-        block content
+        link(rel='stylesheet', href='/stylesheets/mockup.css')
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+        script(src='/javascripts/mockup-global.js')
         script(src='/javascripts/jquery.autotab.min.js')
-        script(src='/javascripts/weekly-scheduler.js')
-        script(src='/javascripts/global.js')
+        script(src="/javascripts/jquery.weekly-schedule-plugin.min.js")
+    body
+        header.globalNav
+            div.container-lg
+                ul.navRoot
+                    li.navSection.logo
+                        a(href="/").rootLink 
+                            h1 AntZer>
+                    li.navSection.generalInfo
+                        a(href="/about").rootLink.aboutLink About
+                        a(href="/contact").rootLink.contactLink Contact
+        div.globalContent
+            main
+                header
+                    div.background
+                        div#topLayer
+                        div#bottomLayer
+                    section#intro
+                div.contentArea
+                    block content
