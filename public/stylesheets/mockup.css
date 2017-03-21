@@ -496,8 +496,12 @@ input.next:focus {
 }
 
 @media (max-width: 600px) {
+    #title {
+        margin-bottom: 15%;
+    }
+
     #title h1 {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     #title span {
