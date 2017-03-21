@@ -496,6 +496,14 @@ input.next:focus {
 }
 
 @media (max-width: 600px) {
+    .globalNav .navSection.logo .rootLink {
+        margin: 0;
+    }
+
+    .rootLink h1 {
+        font-size: 26px;
+    }
+
     #title {
         margin-bottom: 15%;
     }
