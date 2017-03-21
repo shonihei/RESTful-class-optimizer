@@ -448,6 +448,19 @@ input.next:focus {
     animation-name: fadeIn;
 }
 
+::-webkit-input-placeholder {
+    color: white;
+}
+:-moz-placeholder { /* older Firefox*/
+    color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder {
+    color: white;
+}
+
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0
@@ -531,6 +544,7 @@ input.next:focus {
 
     .input {
         margin: 0.6em 0 0.6em 0;
+        width: 100%;
     }
 
     .input__field--yoshiko:focus + .input__label--yoshiko .input__label-content--yoshiko,
@@ -538,6 +552,24 @@ input.next:focus {
     	-webkit-transform: translate3d(0, 100%, 0);
     	transform: translate3d(0, 100%, 0);
     }
+
+    .courseinput .input--yoshiko label {
+        display: none;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #cbcbcb;
+    }
+    :-moz-placeholder { /* older Firefox*/
+        color: #cbcbcb;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: #cbcbcb;
+    }
+    :-ms-input-placeholder {
+        color: #cbcbcb;
+    }
+
 }
 
 @media (max-width: 480px) {
