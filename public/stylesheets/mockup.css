@@ -578,7 +578,7 @@ button.next:focus {
     }
 
     .courseinput {
-        flex-direction: column;
+        /*flex-direction: column;*/
         margin: 1em 0 1em 0;
     }
 
@@ -622,7 +622,7 @@ button.next:focus {
         margin: 0;
     }
 
-    .left-input {
+    /*.left-input {
         border-top: 0;
         border-left: 0;
         border-right: 0;
@@ -641,7 +641,7 @@ button.next:focus {
         border-right: 0;
         border-top: 1px dashed;
         border-bottom: 0;
-    }
+    }*/
 
     .courseinput {
         border: 2px solid #f9bd84;
