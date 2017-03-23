@@ -69,12 +69,23 @@ ul, menu, dir {
     flex-direction: column;
     z-index: 0;
     margin-bottom: 100px;
+    width: 70%;
+    height: 60%;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+}
+
+.extended {
+    width: 100% !important;
 }
 
 .contentArea {
     position: absolute;
     width: 100%;
     top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container {
@@ -231,17 +242,18 @@ ul, menu, dir {
     color: #79302E;
 }
 
-button.next i {
+button.form-button i {
     position: relative;
     left: 7px;
     transition: .3s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-button.next {
+button.form-button {
     background: #e76710;
     color: #FAFAFA;
     border: none;
     border-radius: 2px;
+    margin: 0 1em 0 1em;
     text-align: center;
     letter-spacing: 1.5px;
     padding: 15px 95px;
@@ -255,16 +267,16 @@ button.next {
     transition: .3s ease-in-out;
 }
 
-button.next:hover {
+button.form-button:hover {
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
     background-color: #F46D12;
 }
 
-button.next:hover > i {
+button.form-button:hover > i {
     left: 15px;
 }
 
-button.next:focus {
+button.form-button:focus {
     outline: none;
     cursor: pointer;
 }
@@ -445,9 +457,6 @@ button.next:focus {
     height: 100%;
     width: 100%;
     z-index: -1;
-    /*display: flex;
-    flex-direction: column;
-    justify-content: center;*/
 }
 
 .feedback i {
@@ -621,27 +630,6 @@ button.next:focus {
     .right {
         margin: 0;
     }
-
-    /*.left-input {
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 1px dashed;
-    }
-
-    .mid-input {
-        border-right: 0;
-        border-left: 0;
-        border-top: 0;
-        border-bottom: 0;
-    }
-
-    .right-input {
-        border-left: 0;
-        border-right: 0;
-        border-top: 1px dashed;
-        border-bottom: 0;
-    }*/
 
     .courseinput {
         border: 2px solid #f9bd84;

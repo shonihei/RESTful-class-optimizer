@@ -10,8 +10,12 @@ $(document).ready(function() {
     $('input').autotab();
 
     // Add submission event listener
-    $('.next').on('click', requestData);
+    $('#next').on('click', requestData);
     //$('h1').on('click', initializeSchedule);
+    $('#secret').on('click', function() {
+        $('#form-area').addClass('extended');
+        initializeSchedule();
+    });
 });
 
 // validate userinput and request appropriate data

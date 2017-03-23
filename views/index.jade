@@ -3,7 +3,7 @@ extends layout
 block content
     div.container-lg#title
         h1 We got the #[span Antzer] to all your problems.
-    div.container-lg#form-area
+    div#form-area
         div.form-container
             div.container-lg
                 h1.formTitle What classes are you interested in?
@@ -19,15 +19,17 @@ block content
                             label.input__label.input__label--yoshiko(for='input-2')
                                 span.input__label-content.input__label-content--yoshiko(data-content="DEPARTMENT") DEPARTMENT
                         span.input.input--yoshiko.right
-                            input#input-3.input__field.input__field--yoshiko.right-input(type='text' maxlength=3 placeholder="Class No.")
+                            input#input-3.input__field.input__field--yoshiko.right-input(type='text' maxlength=3 placeholder="Course No.")
                             label.input__label.input__label--yoshiko(for='input-3')
                                 span.input__label-content.input__label-content--yoshiko(data-content="COURSE NO.") COURSE NO.
                             span.feedback
                                 i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
                                 span.sr-only Loading...
             div.nextContainer
-                button.next NEXT
+                button#next.form-button NEXT
                     i.fa.fa-chevron-right
+                button#secret.form-button SECRET
+                    i.fa.fa-user-secret
         script(src='../javascripts/classie.js')
         script.
             (function() {
