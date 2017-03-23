@@ -79,8 +79,7 @@ ul, menu, dir {
 
 .form-container {
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.44);
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 19px 60px, rgba(0, 0, 0, 0.219608) 0px 15px 20px;
     display: flex;
     padding: 0 75px;
     flex-direction: column;
@@ -230,25 +229,40 @@ ul, menu, dir {
     color: #79302E;
 }
 
-input.next {
-    background: linear-gradient(-180deg, #F46D12 25%, #D84E35 89%);
+button.next i {
+    position: relative;
+    left: 7px;
+    transition: .3s ease-in-out;
+}
+
+button.next {
+    background: #e76710;
     color: #FAFAFA;
     border: none;
-    border-radius: 4px;
+    border-radius: 2px;
+    text-align: center;
+    letter-spacing: 1.5px;
     padding: 15px 95px;
-    box-shadow: 0 17px 10px -10px rgba(0,0,0,0.4);
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     transition: all ease-in-out 300ms;
     font-family: Montserrat, Open Sans,Segoe UI,sans-serif;
+    font-size: 12px;
     font-weight: 100;
     z-index: 10;
+    transition: .3s ease-in-out;
 }
 
-input.next:hover {
-    box-shadow: 0 22px 20px -10px rgba(0,0,0,0.2);
-    transform: translate(0px, -5px);
+button.next:hover {
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+    background-color: #F46D12;
 }
 
-input.next:focus {
+button.next:hover > i {
+    left: 15px;
+}
+
+button.next:focus {
     outline: none;
     cursor: pointer;
 }
